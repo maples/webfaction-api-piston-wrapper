@@ -1,0 +1,4 @@
+Django==1.2.4
+MySQL-python==1.2.3
+django-piston==0.2.2
+django-rosetta==0.5.6
