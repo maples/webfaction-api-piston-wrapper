@@ -1,19 +1,6 @@
-0) virtualenv --no-site-packages forum-social-mundial-env
-1) git clone  <url> dir
-2) cd dir
-4) source forum-social-mundial-env/bin/activate
-5) pip install -r requirements.txt
-
-Se necessário instale novas dependências no projeto, no final efetue um freeze nas dependências  do projeto, através do seguinte comando.
-6) pip freeze > requirements.txt
-
-7) criar o banco de dados
-Criar o usuário do banco de dados e repassar permissões:
-Logado como root:
-
-CREATE USER 'maples'@'localhost' IDENTIFIED BY 'maples';
-
-
-Se for o caso vc pode repassar permissoes apenas para determinado schema
-GRANT SELECT,INSERT,UPDATE,DELETE ON *.* TO 'maples'@'localhost';
-
+1) git clone  git@github.com:lolcode/webfaction-api-piston-wrapper.git
+2) start a new django app
+3) add the clone to your python path in settings.py (sys.path.append)
+4) change your user name and passwd
+5) add webfaction_api_piston_wrapper to INSTALLED_APPS
+6) append (r'^webfaction/', include('webfaction_api_piston_wrapper.urls')) in urlpatterns
