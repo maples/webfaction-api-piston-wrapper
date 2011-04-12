@@ -1,4 +1,5 @@
 import xmlrpclib
+from django.conf import settings
 
 class Webfaction:
 
@@ -32,6 +33,4 @@ class Webfaction:
             #TODO: add APIException
             raise e
 
-api = Webfaction('maples', '')
-
-
+api = Webfaction(settings.API_WEBFACTION_USER, settings.API_WEBFACTION_PASSWD)
