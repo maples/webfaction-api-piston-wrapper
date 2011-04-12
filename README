@@ -4,3 +4,16 @@
 4) change your user name and passwd
 5) add webfaction_api_piston_wrapper to INSTALLED_APPS
 6) append (r'^webfaction/', include('webfaction_api_piston_wrapper.urls')) in urlpatterns
+
+See it in action (requires curl):
+
+curl --verbose http://localhost:8000/webfaction/domain/
+curl -d "domain=some-new-domain.com&subdomains=sub1&subdomains=sub2&subdomains=sub3" http://localhost:8000/webfaction/domain/
+curl -X DELETE  http://localhost:8000/webfaction/domain/some-new-domain.com
+
+TODO
+-DomainHandler
+ -delete should receive a optional list of subdomains
+ -implement PUT method: add subdomains (change the main domain is not allowed)
+
+

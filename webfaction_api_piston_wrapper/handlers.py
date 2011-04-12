@@ -1,73 +1,78 @@
 from piston.handler import BaseHandler
+from piston.utils import throttle, validate, rc
 from models import Domain
+from helper import api
 #from piston.utils import throttle, validate, rc
+
+ 
 
 class EmailHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Email
     exclude = ()
     def read(self, request):
       return None
 
-class Website(BaseHandler):
+class WebsiteHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Email
     exclude = ()
     def read(self, request):
         return None
 
-class Domain(BaseHandler):
+class DomainHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Domain
+    exclude = ()
+    def read(self, request):
+        domains = api.list_domains()
+        return domains
+
+    #@validate(DomainForm, 'POST')
+    def create(self, request):
+        domain = request.POST.get('domain')
+        subdomains = request.POST.getlist('subdomains')
+        return api.create_domain(domain, *subdomains)
+
+    def delete(self, request, domain):
+        api.delete_domain(domain)
+        return rc.DELETED
+
+class ApplicationHandler(BaseHandler):
+    allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
     exclude = ()
     def read(self, request):
         return None
 
-class Application(BaseHandler):
+class CronHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Email
     exclude = ()
     def read(self, request):
         return None
 
-class Cron(BaseHandler):
+class DNSHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Email
     exclude = ()
     def read(self, request):
         return None
 
-class DNS(BaseHandler):
+class DatabaseHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = DNS
     exclude = ()
     def read(self, request):
         return None
 
-class Database(BaseHandler):
+class FileHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = Database
     exclude = ()
     def read(self, request):
         return None
 
-class File(BaseHandler):
+class ShellUserHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = File
     exclude = ()
     def read(self, request):
         return None
 
-class ShellUser(BaseHandler):
+class ServerHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = ShellUser
-    exclude = ()
-    def read(self, request):
-        return None
-
-class Server(BaseHandler):
-    allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
-    #model = ShellUser
     exclude = ()
     def read(self, request):
         return None
