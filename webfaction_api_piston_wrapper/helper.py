@@ -11,8 +11,6 @@ class Webfaction:
           self.login(user_name, passwd)
 
     def login(self, user_name, passwd ):
-        print user_name
-        print passwd
         self.server = xmlrpclib.ServerProxy('https://api.webfaction.com/')
         self.session_id, self.account = self.server.login(user_name, passwd)
 
