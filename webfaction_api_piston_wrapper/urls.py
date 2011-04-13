@@ -14,6 +14,7 @@ urlpatterns = patterns('',
 
     url(r'^domain/$', domain_handler, {'emitter_format' : 'json'}),
     url(r'^domain/(?P<domain>.+)$', domain_handler, {'emitter_format' : 'json'}),
+    url(r'^domain/(?P<domain>.+)/(?P<subdomain>.+)$', domain_handler, {'emitter_format' : 'json'}),
 
     url(r'^application/$', email_handler, {'emitter_format' : 'json'}),
     url(r'^application/(?P<application>\w+)$', email_handler, {'emitter_format' : 'json'}),

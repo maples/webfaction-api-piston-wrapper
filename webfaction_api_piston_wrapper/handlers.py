@@ -31,8 +31,11 @@ class DomainHandler(BaseHandler):
         subdomains = request.POST.getlist('subdomains')
         return api.create_domain(domain, *subdomains)
 
-    def delete(self, request, domain):
-        api.delete_domain(domain)
+    def delete(self, request, domain, subdomain=None):
+        if subdomain:
+            api.delete_domain(domain, subdomain)          
+        else:
+            api.delete_domain(domain)
         return rc.DELETED
 
 class ApplicationHandler(BaseHandler):
