@@ -35,4 +35,16 @@ def website_exists(website_name):
 def create_website(website_name, ip, https=False, subdomains=[], site_apps=[]):
     if  website_exists(website_name): raise WebFactionAPIException('WEBSITE_EXISTS')
     return webfaction.create_website(website_name, ip, https, subdomains, site_apps)
+
+def list_websites(website_name):
+    websites =  webfaction.list_websites()
+    website = list()
+    try:
+        website =  [d for d in websites if d['name'] == website_name][0]
+    except Exception, e:
+        pass
+    return website
     
+    
+def update_website(website_name, ip, https=False, subdomains=[], site_apps=[]):
+    return webfaction.update_website(website_name, ip, https, subdomains, site_apps)
