@@ -32,7 +32,7 @@ def website_exists(website_name):
     websites = webfaction.list_websites()
     return bool([ d for d in websites if d['name'] == website_name])
     
-def create_website(website_name, ip, https=False, subdomains, site_apps):
+def create_website(website_name, ip, https=False, subdomains=[], site_apps=[]):
     if  website_exists(website_name): raise WebFactionAPIException('WEBSITE_EXISTS')
-    return webfaction.create_website(website_name, ip, https=False, subdomains, site_apps)
+    return webfaction.create_website(website_name, ip, https, subdomains, site_apps)
     
