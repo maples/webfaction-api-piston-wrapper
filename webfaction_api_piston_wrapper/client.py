@@ -27,4 +27,12 @@ def app_exists(name):
 def create_app(name, type, extra_info=None, autostart=False):
     if  app_exists(name): raise WebFactionAPIException('APPLICATION_EXISTS')
     return webfaction.create_app(name, type, autostart, extra_info)
+
+def website_exists(website_name):
+    websites = webfaction.list_websites()
+    return bool([ d for d in websites if d['name'] == website_name])
+    
+def create_website(website_name, ip, https=False, subdomains, site_apps):
+    if  website_exists(website_name): raise WebFactionAPIException('WEBSITE_EXISTS')
+    return webfaction.create_website(website_name, ip, https=False, subdomains, site_apps)
     
