@@ -43,8 +43,7 @@ def list_websites(website_name):
         website =  [d for d in websites if d['name'] == website_name][0]
     except Exception, e:
         pass
-    return website
-    
+    return website    
     
 def update_website(website_name, ip, https=False, subdomains=[], site_apps=[]):
     return webfaction.update_website(website_name, ip, https, subdomains, site_apps)
