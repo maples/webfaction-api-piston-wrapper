@@ -4,6 +4,7 @@ import handlers
 
 email_handler = Resource(handlers.EmailHandler)
 domain_handler =Resource(handlers.DomainHandler)
+
 #TODO: how to use the same pattern for optional params?
 urlpatterns = patterns('',
     url(r'^email/$', email_handler, {'emitter_format' : 'json'}),

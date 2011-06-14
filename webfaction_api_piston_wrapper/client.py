@@ -19,3 +19,12 @@ def create_subdomain(domain, subdomain):
 def create_domain(domain):
     if domain_exists(domain): raise WebFactionAPIException('DOMAIN_EXISTS')
     return webfaction.create_domain(domain)
+
+def app_exists(name):
+    apps = webfaction.list_apps()
+    return bool([ d for d in apps if d['name'] == name])
+    
+def create_app(name, type, autostart=True, extra_info=None):
+    if  app_exists(name): raise WebFactionAPIException('APPLICATION_EXISTS')
+    return webfaction.create_app(name, type, autostart, extra_info)
+    

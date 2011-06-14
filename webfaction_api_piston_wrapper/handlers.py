@@ -3,7 +3,6 @@ from piston.utils import throttle, validate, rc
 from models import Domain
 from client import webfaction as api
 #from piston.utils import throttle, validate, rc
-
  
 
 class EmailHandler(BaseHandler):
@@ -41,6 +40,7 @@ class DomainHandler(BaseHandler):
 class ApplicationHandler(BaseHandler):
     allowed_methods = ('GET', 'PUT', 'POST', 'DELETE')
     exclude = ()
+    
     def read(self, request):
         return None
 
